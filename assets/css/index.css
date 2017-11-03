@@ -1,0 +1,95 @@
+* {
+  box-sizing: border-box;
+}
+html {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  color: white;
+}
+#backdrop {
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('/images/bg.jpg') no-repeat;
+  background-size: cover;
+}
+#instance-info {
+  opacity: 0;
+}
+#instance-info:hover {
+  opacity: 1;
+}
+#transform-logo {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  left: 50%;
+  margin-left: -150px;
+  top: 25%;
+  margin-top: -150px;
+  background: url('/images/Transform_SOLO.png') no-repeat;
+  background-size: contain;
+}
+
+#autobot {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  left: 50%;
+  margin-left: -150px;
+  top: 50%;
+  margin-top: -150px;
+  background: url('/images/autobot.png') no-repeat;
+  background-size: contain;
+  z-index: 2;
+  opacity: 1  ;
+}
+
+#decepticon {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  left: 50%;
+  margin-left: -150px;
+  top: 50%;
+  margin-top: -150px;
+  background: url('/images/decepticon.png') no-repeat;
+  background-size: contain;
+  z-index: 2;
+  opacity: 0;
+}
+@keyframes wipeout {
+  0% {opacity: 1; transform: scale(1);
+  }
+  25% {opacity: 1; transform: scale(.25) rotateY(180deg);
+  }
+  50% {transform: scale(.01);}
+  75% {opacity: 0; transform: scale(.25);
+  }
+  100% {opacity: 0; transform: scale(1);
+  }
+}
+
+@keyframes wipein {
+  0% {opacity: 0; transform: scale(1);
+  }
+  25% {opacity: 0; transform: scale(.25) rotateY(180deg);
+  }
+  50% {transform: scale(.01);}
+  75% {opacity: 1; transform: scale(.25) rotateY(-180deg);
+  }
+  100% {opacity: 1; transform: scale(1);
+  }
+}
+
+.wipeout {
+  animation: wipeout 1.5s linear;
+  -webkit-animation-fill-mode: forwards;
+}
+.wipein {
+  animation: wipein 1.5s linear;
+  -webkit-animation-fill-mode: forwards;
+}

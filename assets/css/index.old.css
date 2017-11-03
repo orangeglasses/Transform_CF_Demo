@@ -1,0 +1,55 @@
+body {
+  font-family: sans-serif;
+  background-image: url("/images/bg.jpg");
+  background-size: cover;
+}
+@keyframes wipeout {
+  0% {transform: scale(1);
+  }
+  25% {transform: scale(.25) rotateY(180deg);
+  }
+  50% {}
+  75% {opacity: 0; transform: scale(.25);
+  }
+  100% {opacity: 0; transform: scale(1);
+  }
+}
+
+@keyframes wipein {
+  0% {transform: scale(1);
+  }
+  25% {transform: scale(.25) rotateY(180deg);
+  }
+  50% {}
+  75% {opacity: 1; transform: scale(.25) rotateY(-180deg);
+  }
+  100% {opacity: 1; transform: scale(1);
+  }
+}
+
+.wipeout {
+  animation: wipeout 1.5s linear;
+  -webkit-animation-fill-mode: forwards;
+}
+.wipein {
+  animation: wipein 1.5s linear;
+  -webkit-animation-fill-mode: forwards;
+}
+
+#transform-logo {
+  padding: 70px 0;
+  position: absolute;
+  content: url("/images/Transform_SOLO.png")
+}
+
+#autobot{
+  content: url("/images/g1_autobot_logo_by_gaugespacegraphix-d84pqkf.png");
+  position: absolute;
+  width: 25%;
+}
+
+#decepticon{
+  content: url("/images/g1_decepticon_logo_by_gaugespacegraphix-d84prwc.png");
+  position: absolute;
+  width: 25%;
+}

@@ -1,0 +1,6 @@
+applications:
+- name: Transform-CF-App1
+  memory: 64M
+  instances: 1
+  random-route: true
+  buildpack: nodejs_buildpack
