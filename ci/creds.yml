@@ -5,4 +5,4 @@ cf-org: martin-itq-org
 cf-space: development
 slack-webtoken: "https://hooks.slack.com/services/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"
 slack_channel: "#demo"
-manifest: manifest-ci.yml
+cf-manifest: manifest-ci.yml
