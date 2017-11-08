@@ -14,14 +14,14 @@ jobs:
     params:
       username: concourse
       channel: ((slack_channel))
-      silent: true
-      text: "@channel Check succeeded, This code is squeaky clean."
+      silent: false
+      text: "Check succeeded, This code is squeaky clean."
   on_failure:
     put: slack-alert
     params:
       username: concourse
       channel: ((slack_channel))
-      silent: true
+      silent: false
       text: "Check failed, Aborting pipeline."
 - name: Build-App
   build_logs_to_retain: 100
@@ -38,14 +38,14 @@ jobs:
       params:
         username: concourse
         channel: ((slack_channel))
-        silent: true
+        silent: false
         text: "Build succeeded. Go you!"
     on_failure:
       put: slack-alert
       params:
         username: concourse
         channel: ((slack_channel))
-        silent: true
+        silent: false
         text: "Build failed. fix it!"
 - name: Deploy-App
   build_logs_to_retain: 100
@@ -69,14 +69,14 @@ jobs:
     params:
       username: concourse
       channel: ((slack_channel))
-      silent: true
+      silent: false
       text: "Deployment succeeded, Who's awesome? You, thats who!"
   on_failure:
     put: slack-alert
     params:
       username: concourse
       channel: ((slack_channel))
-      silent: true
+      silent: false
       text: "Deployment failed. why?!?!?!"
 resource_types:
 - name: slack-notification
