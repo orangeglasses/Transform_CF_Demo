@@ -15,7 +15,7 @@ jobs:
       username: concourse
       channel: ((slack_channel))
       silent: true
-      text: "Check succeeded, This code is squeaky clean."
+      text: "@channel Check succeeded, This code is squeaky clean."
   on_failure:
     put: slack-alert
     params:
