@@ -38,6 +38,12 @@ jobs:
   public: false
   serial: true
   plan:
+    params:
+      api: {{cf-api}}
+      username: {{cf-user}}
+      password: {{cf-password}}
+      organization: {{cf-org}}
+      space: {{cf-space}}
   - get: resource-git
     trigger: true
     passed: [ Build-App ]
