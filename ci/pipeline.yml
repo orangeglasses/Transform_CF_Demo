@@ -49,6 +49,7 @@ jobs:
       password: {{cf-password}}
       organization: {{cf-org}}
       space: {{cf-space}}
+      manifest: {{manifest}}
   on_failure:
     put: slack-alert
     params:
