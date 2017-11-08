@@ -9,6 +9,13 @@ jobs:
     trigger: true
   - task: task-check
     file: resource-git/ci/check.yml
+  on_success:
+    put: slack-alert
+    params:
+      username: concourse
+      channel: ((slack_channel))
+      silent: true
+      text: "Check succeeded, This code is squeaky clean."
   on_failure:
     put: slack-alert
     params:
@@ -26,6 +33,13 @@ jobs:
     passed: [ Check-Code ]
   - task: task-build
     file: resource-git/ci/build.yml
+    on_success:
+      put: slack-alert
+      params:
+        username: concourse
+        channel: ((slack_channel))
+        silent: true
+        text: "Build succeeded. Go you!"
     on_failure:
       put: slack-alert
       params:
@@ -50,6 +64,13 @@ jobs:
       organization: {{cf-org}}
       space: {{cf-space}}
       manifest: {{cf-manifest}}
+  on_success:
+    put: slack-alert
+    params:
+      username: concourse
+      channel: ((slack_channel))
+      silent: true
+      text: "Deployment succeeded, Who's awesome? You, thats who!"
   on_failure:
     put: slack-alert
     params:
