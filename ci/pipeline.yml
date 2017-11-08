@@ -1,0 +1,68 @@
+---
+jobs:
+- name: Check-Code
+  build_logs_to_retain: 100
+  public: false
+  serial: true
+  plan:
+  - get: resource-git
+    trigger: true
+  - task: task-check
+    file: resource-git/ci/check.yml
+  on_failure:
+    put: slack-alert
+    params:
+      username: concourse
+      channel: ((slack_channel))
+      silent: true
+      text: "Check failed, Aborting pipeline."
+- name: Build-App
+  build_logs_to_retain: 100
+  public: false
+  serial: true
+  plan:
+  - get: resource-git
+    trigger: true
+    passed: [ Check-Code ]
+  - task: task-build
+    file: resource-git/ci/build.yml
+    on_failure:
+      put: slack-alert
+      params:
+        username: concourse
+        channel: ((slack_channel))
+        silent: true
+        text: "Build failed. fix it!"
+- name: Deploy-App
+  build_logs_to_retain: 100
+  public: false
+  serial: true
+  plan:
+  - get: resource-git
+    trigger: true
+    passed: [ Build-App ]
+  - task: task-deploy
+    file: resource-git/ci/deploy.yml
+  on_failure:
+    put: slack-alert
+    params:
+      username: concourse
+      channel: ((slack_channel))
+      silent: true
+      text: "Deployment failed. why?!?!?!"
+resource_types:
+- name: slack-notification
+  type: docker-image
+  source:
+    repository: cfcommunity/slack-notification-resource
+    tag: latest
+resources:
+- name: resource-git
+  type: git
+  source:
+    uri: ((git-uri))
+    private_key: ((git-private-key))
+- name: slack-alert
+  type: slack-notification
+  source:
+    url: ((slack-webtoken))
