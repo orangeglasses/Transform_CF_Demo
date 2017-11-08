@@ -38,17 +38,17 @@ jobs:
   public: false
   serial: true
   plan:
+  - get: resource-git
+    trigger: true
+    passed: [ Build-App ]
+  - task: task-deploy
+    file: resource-git/ci/deploy.yml
     params:
       api: {{cf-api}}
       username: {{cf-user}}
       password: {{cf-password}}
       organization: {{cf-org}}
       space: {{cf-space}}
-  - get: resource-git
-    trigger: true
-    passed: [ Build-App ]
-  - task: task-deploy
-    file: resource-git/ci/deploy.yml
   on_failure:
     put: slack-alert
     params:
@@ -67,7 +67,6 @@ resources:
   type: git
   source:
     uri: ((git-uri))
-    private_key: ((git-private-key))
 - name: slack-alert
   type: slack-notification
   source:

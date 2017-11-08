@@ -6,8 +6,7 @@ image_resource:
   source: {repository: martyca/cf_tools}
 
 inputs:
-- name: resource-git-smoketests
+- name: resource-git
 
 run:
   path: resource-git/ci/check.sh
-
