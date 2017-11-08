@@ -1,5 +1,5 @@
 applications:
-- name: Transform
+- name: Transform-ci
   domain: cloudfoundry.life
   memory: 64M
   instances: 1
