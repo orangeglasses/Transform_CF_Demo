@@ -1,5 +1,5 @@
 git-uri: https://github.com/orangeglasses/Transform_CF_Demo.git
-cf-api: run.pivotal.io
+cf-api: https://api.run.pivotal.io
 cf-user: martin@caarels.com
 cf-org: martin-itq-org
 cf-space: development
