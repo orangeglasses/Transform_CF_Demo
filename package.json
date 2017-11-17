@@ -1,13 +1,8 @@
 {
   "name": "pcf-node-app",
   "engines": {
-<<<<<<< HEAD
-        "node": "8.7.0",
-        "npm": "5.5.1"
-=======
-    "node": "8.7.0",
-    "npm": "5.5.1"
->>>>>>> 094ff4f33605e5499aa02c218cbd05ee68e887f7
+    "node": "^8.7.0",
+    "npm": "^5.5.1"
   },
   "version": "1.0.0",
   "description": "",
