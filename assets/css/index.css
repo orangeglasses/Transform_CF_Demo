@@ -17,6 +17,7 @@ html {
   background-size: cover;
 }
 #instance-info {
+  font-size: 18pt;
   opacity: 0;
   width: 400px;
 }
@@ -24,6 +25,7 @@ html {
   opacity: 1;
 }
 #list-autobots {
+  font-size: 18pt;
   opacity: 0;
   position: absolute;
   top: 2%;
