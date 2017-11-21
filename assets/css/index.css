@@ -19,7 +19,7 @@ html {
 #instance-info {
   font-size: 18pt;
   opacity: 0;
-  width: 400px;
+  width: 600px;
 }
 #instance-info:hover {
   opacity: 1;
